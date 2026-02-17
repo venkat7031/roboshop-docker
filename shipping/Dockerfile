@@ -1,9 +1,15 @@
-FROM maven
+FROM maven:3.8.6-openjdk-8
+
 WORKDIR /opt/server
+
 COPY pom.xml .
-COPY src /opt/server
+COPY src ./src
+
 RUN mvn clean package
-RUN mv /opt/server/target/shipping-1.0.jar /opt/server/shipping.jar
+
+RUN mv target/*.jar shipping.jar
+
 ENV CART_ENDPOINT="cart:8080" \
     DB_HOST="mysql"
+
 CMD ["java", "-jar", "shipping.jar"]
