@@ -56,4 +56,15 @@ services:
       AMQP_HOST: rabbitmq
       AMQP_USER: roboshop
       AMQP_PASS: roboshop123
+  frontend:
+    image: venky7031/frontend:v1
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - user
+    - cart
+    - payment
+    - shipping
       
