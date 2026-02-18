@@ -11,9 +11,9 @@ services:
     container_name: catalogue
     depends_on: 
     - mongodb
-  redis:
-    image: redis:7.0
-    container_name: redis
+  # redis:
+  #   image: redis:7.0
+  #   container_name: redis
   user:
     image: venky7031/user:v1
     container_name: user
@@ -35,12 +35,12 @@ services:
     depends_on:
     - mysql
     - cart
-  rabbitmq:
-    image: rabbitmq:3
-    container_name: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: roboshop
-      RABBITMQ_DEFAULT_PASS: roboshop123
+  # rabbitmq:
+  #   image: rabbitmq:3
+  #   container_name: rabbitmq
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: roboshop
+  #     RABBITMQ_DEFAULT_PASS: roboshop123
   payment:
     image: venky7031/payment:v1
     container_name: payment
@@ -56,15 +56,15 @@ services:
       AMQP_HOST: rabbitmq
       AMQP_USER: roboshop
       AMQP_PASS: roboshop123
-  frontend:
-    image: venky7031/frontend:v1
-    container_name: frontend
-    ports:
-    - "80:80"
-    depends_on:
-    - catalogue
-    - user
-    - cart
-    - payment
-    - shipping
+  # frontend:
+  #   image: venky7031/frontend:v1
+  #   container_name: frontend
+  #   ports:
+  #   - "80:80"
+  #   depends_on:
+  #   - catalogue
+  #   - user
+  #   - cart
+  #   - payment
+  #   - shipping
       
